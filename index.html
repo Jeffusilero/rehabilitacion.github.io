@@ -4,28 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Comunicador Voz Masculina</title>
-    <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; }
-        .seccion-label { width: 100%; font-weight: bold; color: #444; margin: 10px 0 5px 5px; font-size: 0.9rem; }
-        #area-frase { width: 100%; max-width: 600px; min-height: 80px; background: #fff; border: 3px solid #007bff; border-radius: 12px; padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 10px; }
-        .palabra-bloque { background: #e3f2fd; border: 2px solid #2196f3; padding: 10px 15px; border-radius: 8px; font-size: 1.3rem; font-weight: bold; color: #0d47a1; }
-        .controles-principales { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; width: 100%; max-width: 600px; margin-bottom: 20px; }
-        .btn-accion { height: 70px; border-radius: 12px; border: none; font-size: 1.2rem; font-weight: bold; color: white; cursor: pointer; box-shadow: 0 4px rgba(0,0,0,0.2); }
-        .btn-hablar { background-color: #28a745; }
-        .btn-borrar { background-color: #dc3545; }
-        .contenedor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 600px; }
-        .btn-palabra { aspect-ratio: 1.1 / 1; border: none; border-radius: 15px; font-size: 1.1rem; font-weight: bold; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; color: white; box-shadow: 0 4px #999; padding: 5px; }
-        .btn-palabra:active { transform: translateY(3px); box-shadow: 0 1px #666; }
-        .emoji { font-size: 2.2rem; margin-bottom: 5px; }
-        .afirmacion { background-color: #28a745; }
-        .negacion { background-color: #dc3545; }
-        .sujeto { background-color: #ffc107; color: #333; }
-        .verbo { background-color: #007bff; }
-        .conector { background-color: #6c757d; }
-        .estado { background-color: #fd7e14; }
-        .objeto { background-color: #17a2b8; }
-        .salud { background-color: #6f42c1; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -33,18 +12,18 @@
     <div id="area-frase"></div>
 
     <div class="controles-principales">
-        <button class="btn-accion btn-hablar" onclick="reproducirFrase()">🔊 HABLAR (VARÓN)</button>
+        <button class="btn-accion btn-hablar" onclick="reproducirFrase()">🔊 HABLAR FRASE</button>
         <button class="btn-accion btn-borrar" onclick="limpiarTodo()">❌ BORRAR</button>
     </div>
 
     <div class="contenedor-grid">
         <button class="btn-palabra afirmacion" onclick="add('SÍ')"><span class="emoji">✅</span>SÍ</button>
         <button class="btn-palabra negacion" onclick="add('NO')"><span class="emoji">❌</span>NO</button>
-        <button class="btn-palabra conector" onclick="add('Tal vez')"><span class="emoji">❓</span>QUIZÁS</button>
+        <button class="btn-palabra conector" onclick="add('Ahora')"><span class="emoji">⏰</span>AHORA</button>
 
         <button class="btn-palabra sujeto" onclick="add('Yo')"><span class="emoji">🙋‍♂️</span>YO</button>
         <button class="btn-palabra sujeto" onclick="add('Tú')"><span class="emoji">👤</span>TÚ</button>
-        <button class="btn-palabra conector" onclick="add('No')"><span class="emoji">🚫</span>NO (Acción)</button>
+        <button class="btn-palabra negacion" onclick="add('No quiero')"><span class="emoji">🚫</span>NO QUIERO</button>
 
         <button class="btn-palabra verbo" onclick="add('Quiero')"><span class="emoji">⭐</span>QUIERO</button>
         <button class="btn-palabra verbo" onclick="add('Tengo')"><span class="emoji">🤲</span>TENGO</button>
@@ -63,59 +42,6 @@
         <button class="btn-palabra estado" onclick="add('Sueño')"><span class="emoji">😴</span>SUEÑO</button>
     </div>
 
-    <script>
-        let fraseArray = [];
-        let vozMasculina = null;
-
-        // Cargar voces y buscar una masculina
-        function cargarVoces() {
-            const voces = window.speechSynthesis.getVoices();
-            // Busca voces en español que suenen a hombre (Microsoft Helia o Google español suelen ser las opciones)
-            vozMasculina = voces.find(v => (v.lang.includes('es') && (v.name.includes('Male') || v.name.includes('David') || v.name.includes('Pablo')))) 
-                           || voces.find(v => v.lang.includes('es'));
-        }
-
-        window.speechSynthesis.onvoiceschanged = cargarVoces;
-
-        function hablar(texto, velocidad = 0.85) {
-            window.speechSynthesis.cancel();
-            const u = new SpeechSynthesisUtterance(texto);
-            if (vozMasculina) u.voice = vozMasculina;
-            
-            u.lang = 'es-ES';
-            u.rate = velocidad; 
-            u.pitch = 0.8; // BAJAMOS EL TONO: 1.0 es normal, 0.8 es más grave/varonil
-            
-            window.speechSynthesis.speak(u);
-        }
-
-        function add(palabra) {
-            fraseArray.push(palabra);
-            actualizarVisual();
-            hablar(palabra, 1.1);
-        }
-
-        function actualizarVisual() {
-            const area = document.getElementById('area-frase');
-            area.innerHTML = '';
-            fraseArray.forEach(p => {
-                const div = document.createElement('div');
-                div.className = 'palabra-bloque';
-                div.innerText = p;
-                area.appendChild(div);
-            });
-        }
-
-        function reproducirFrase() {
-            if (fraseArray.length === 0) return;
-            hablar(fraseArray.join(' '), 0.8);
-        }
-
-        function limpiarTodo() {
-            fraseArray = [];
-            actualizarVisual();
-            window.speechSynthesis.cancel();
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
