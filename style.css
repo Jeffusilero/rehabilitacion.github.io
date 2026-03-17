@@ -1,4 +1,3 @@
-/* DISEÑO GENERAL */
 body { 
     font-family: 'Segoe UI', Arial, sans-serif; 
     background-color: #f0f4f8; 
@@ -17,7 +16,6 @@ body {
     font-size: 1rem; 
 }
 
-/* ÁREA DE FRASE CONSTRUIDA */
 #area-frase { 
     width: 100%; 
     max-width: 600px; 
@@ -44,7 +42,6 @@ body {
     color: #0d47a1; 
 }
 
-/* BOTONES DE ACCIÓN (HABLAR / BORRAR) */
 .controles-principales { 
     display: grid; 
     grid-template-columns: 2fr 1fr; 
@@ -68,7 +65,6 @@ body {
 .btn-hablar { background-color: #28a745; }
 .btn-borrar { background-color: #dc3545; }
 
-/* CUADRÍCULA DE BOTONES DE COMUNICACIÓN */
 .contenedor-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
@@ -81,7 +77,7 @@ body {
     aspect-ratio: 1 / 1; 
     border: none; 
     border-radius: 20px; 
-    font-size: 1.4rem; /* LETRA MÁS GRANDE */
+    font-size: 1.3rem; 
     font-weight: 900; 
     display: flex; 
     flex-direction: column; 
@@ -92,7 +88,7 @@ body {
     box-shadow: 0 6px #999; 
     padding: 10px; 
     text-align: center; 
-    line-height: 1.2;
+    line-height: 1.1;
     text-transform: uppercase;
 }
 
@@ -101,13 +97,11 @@ body {
     box-shadow: 0 2px #666; 
 }
 
-/* TAMAÑO DE EMOJIS */
 .emoji { 
-    font-size: 2.8rem; /* EMOJIS MUCHO MÁS GRANDES */
+    font-size: 2.8rem; 
     margin-bottom: 8px; 
 }
 
-/* COLORES POR CATEGORÍA */
 .afirmacion { background-color: #28a745; box-shadow: 0 6px #1e7e34; }
 .negacion { background-color: #dc3545; box-shadow: 0 6px #a71d2a; }
 .sujeto { background-color: #ffc107; color: #333; box-shadow: 0 6px #b58900; }
@@ -117,8 +111,7 @@ body {
 .objeto { background-color: #17a2b8; box-shadow: 0 6px #117a8b; }
 .salud { background-color: #6f42c1; box-shadow: 0 6px #4e2d8a; }
 
-/* AJUSTE PARA PANTALLAS PEQUEÑAS */
 @media (max-width: 400px) {
-    .btn-palabra { font-size: 1.1rem; }
+    .btn-palabra { font-size: 1rem; }
     .emoji { font-size: 2.2rem; }
 }

@@ -1,7 +1,6 @@
 let fraseArray = [];
 let vozMasculina = null;
 
-// Cargar voces y buscar una masculina grave
 function cargarVoces() {
     const voces = window.speechSynthesis.getVoices();
     vozMasculina = voces.find(v => (v.lang.includes('es') && 
@@ -9,7 +8,6 @@ function cargarVoces() {
         || voces.find(v => v.lang.includes('es'));
 }
 
-// Escuchar cuando las voces cambien (necesario en muchos navegadores)
 if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = cargarVoces;
 }
@@ -18,18 +16,16 @@ function hablar(texto, velocidad = 0.8) {
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(texto);
     if (vozMasculina) u.voice = vozMasculina;
-    
     u.lang = 'es-ES';
     u.rate = velocidad; 
-    u.pitch = 0.75; // Tono grave varonil
-    
+    u.pitch = 0.75; 
     window.speechSynthesis.speak(u);
 }
 
 function add(palabra) {
     fraseArray.push(palabra);
     actualizarVisual();
-    hablar(palabra, 1.0); // Feedback rápido al tocar
+    hablar(palabra, 1.0);
 }
 
 function actualizarVisual() {
@@ -54,5 +50,4 @@ function limpiarTodo() {
     window.speechSynthesis.cancel();
 }
 
-// Cargar voces inicialmente
 cargarVoces();
