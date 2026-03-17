@@ -25,7 +25,7 @@ function hablar(texto, velocidad = 0.8) {
 function add(palabra) {
     fraseArray.push(palabra);
     actualizarVisual();
-    hablar(palabra, 1.0);
+    // SE ELIMINÓ EL COMANDO DE HABLAR AQUÍ
 }
 
 function actualizarVisual() {
@@ -41,7 +41,7 @@ function actualizarVisual() {
 
 function reproducirFrase() {
     if (fraseArray.length === 0) return;
-    hablar(fraseArray.join(' '), 0.85);
+    hablar(fraseArray.join(' '), 0.85); // SOLO HABLA AL DAR CLIC EN EL BOTÓN VERDE
 }
 
 function limpiarTodo() {
