@@ -8,38 +8,38 @@
 </head>
 <body>
 
-    <div class="seccion-label">Frase en construcción:</div>
+
     <div id="area-frase"></div>
 
     <div class="controles-principales">
-        <button class="btn-accion btn-hablar" onclick="reproducirFrase()">🔊 HABLAR FRASE</button>
+        <button class="btn-accion btn-hablar" onclick="reproducirFrase()">🔊 HABLAR</button>
         <button class="btn-accion btn-borrar" onclick="limpiarTodo()">❌ BORRAR</button>
     </div>
 
     <div class="contenedor-grid">
-        <button class="btn-palabra afirmacion" onclick="add('SÍ')"><span class="emoji">✅</span>SÍ</button>
-        <button class="btn-palabra negacion" onclick="add('NO')"><span class="emoji">❌</span>NO</button>
-        <button class="btn-palabra conector" onclick="add('Ahora')"><span class="emoji">⏰</span>AHORA</button>
+        <button class="btn-palabra afirmacion" onclick="addDirecto('SÍ')"><span class="emoji">✅</span>SÍ</button>
+        <button class="btn-palabra negacion" onclick="addDirecto('NO')"><span class="emoji">❌</span>NO</button>
+        <button class="btn-palabra conector" onclick="addDirecto('Ahora')"><span class="emoji">⏰</span>AHORA</button>
 
-        <button class="btn-palabra sujeto" onclick="add('Tú')"><span class="emoji">👤</span>TÚ</button>
-        <button class="btn-palabra conector" onclick="add('Luego')"><span class="emoji">⏭️</span>LUEGO</button>
-        <button class="btn-palabra negacion" onclick="add('No quiero')"><span class="emoji">🚫</span>NO QUIERO</button>
+        <button class="btn-palabra sujeto" onclick="addDirecto('Tú')"><span class="emoji">👤</span>TÚ</button>
+        <button class="btn-palabra conector" onclick="addDirecto('Luego')"><span class="emoji">⏭️</span>LUEGO</button>
+        <button class="btn-palabra negacion" onclick="addDirecto('No quiero')"><span class="emoji">🚫</span>NO QUIERO</button>
 
-        <button class="btn-palabra verbo" onclick="add('Yo quiero')"><span class="emoji">⭐</span>YO QUIERO</button>
-        <button class="btn-palabra verbo" onclick="add('Yo tengo')"><span class="emoji">🤲</span>YO TENGO</button>
-        <button class="btn-palabra verbo" onclick="add('Yo siento')"><span class="emoji">🧠</span>YO SIENTO</button>
+        <button class="btn-palabra verbo" onclick="addSilencio('Yo quiero')"><span class="emoji">⭐</span>YO QUIERO</button>
+        <button class="btn-palabra verbo" onclick="addSilencio('Yo tengo')"><span class="emoji">🤲</span>YO TENGO</button>
+        <button class="btn-palabra verbo" onclick="addSilencio('Yo siento')"><span class="emoji">🧠</span>YO SIENTO</button>
 
-        <button class="btn-palabra objeto" onclick="add('Agua')"><span class="emoji">💧</span>AGUA</button>
-        <button class="btn-palabra objeto" onclick="add('Comida')"><span class="emoji">🍲</span>COMIDA</button>
-        <button class="btn-palabra objeto" onclick="add('Ir al baño')"><span class="emoji">🚽</span>IR AL BAÑO</button>
+        <button class="btn-palabra objeto" onclick="addSilencio('Agua')"><span class="emoji">💧</span>AGUA</button>
+        <button class="btn-palabra objeto" onclick="addSilencio('Comida')"><span class="emoji">🍲</span>COMIDA</button>
+        <button class="btn-palabra objeto" onclick="addSilencio('Ir al baño')"><span class="emoji">🚽</span>IR AL BAÑO</button>
 
-        <button class="btn-palabra salud" onclick="add('Dolor')"><span class="emoji">🤕</span>DOLOR</button>
-        <button class="btn-palabra salud" onclick="add('Medicina')"><span class="emoji">💊</span>PASTILLA</button>
-        <button class="btn-palabra salud" onclick="add('Bañarme')"><span class="emoji">🛁</span>BAÑARME</button>
+        <button class="btn-palabra salud" onclick="addSilencio('Dolor')"><span class="emoji">🤕</span>DOLOR</button>
+        <button class="btn-palabra salud" onclick="addSilencio('Medicina')"><span class="emoji">💊</span>PASTILLA</button>
+        <button class="btn-palabra salud" onclick="addSilencio('Bañarme')"><span class="emoji">🛁</span>BAÑARME</button>
 
-        <button class="btn-palabra estado" onclick="add('Frío')"><span class="emoji">🥶</span>FRÍO</button>
-        <button class="btn-palabra estado" onclick="add('Calor')"><span class="emoji">🥵</span>CALOR</button>
-        <button class="btn-palabra estado" onclick="add('Sueño')"><span class="emoji">😴</span>SUEÑO</button>
+        <button class="btn-palabra estado" onclick="addSilencio('Frío')"><span class="emoji">🥶</span>FRÍO</button>
+        <button class="btn-palabra estado" onclick="addSilencio('Calor')"><span class="emoji">🥵</span>CALOR</button>
+        <button class="btn-palabra estado" onclick="addSilencio('Sueño')"><span class="emoji">😴</span>SUEÑO</button>
     </div>
 
     <script src="script.js"></script>
